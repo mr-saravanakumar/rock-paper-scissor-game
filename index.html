@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color:rgb(251, 251, 251);
+        margin-left:600px;
+        margin-top: 200px;
+        padding: 0;
+    }
+    #main{
+        
+        background-color:rgb(227, 226, 224);
+        width:200px;
+        height: 200px;
+        padding: 70px;
+        border-radius: 20px;
+        border: 3px solid black;
+        box-shadow: 20px 20px 30px black;
+    }
+    .contents{
+        color:red;
+    }
+    #btns{
+        background-color:coral;
+        width:200px;
+        height: 40px;
+        margin-left: -25px;
+        margin-top: 50px;
+        position: fixed;
+        top:390px;
+        padding: 20px;
+        border-radius: 20px;
+    }
+    button{
+        color:rgb(0, 0, 0);
+        background-color:rgb(139, 61, 121);
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <div id="main">
+    <div  style="display:flex">
+        <div>
+        <p>YOU:</p>
+        <p>COMPUTER:</p>
+        <p>RESULT :</p>
+    </div>
+    <div style="padding-left: 20px;">
+        <p id="player" class="contents"></p>
+        <p class="contents" id="computer"></p>
+        <p id="result"></p>
+    </div>
+</div>
+  <div  id="btns">
+    <button class="btn">ROCK</button>
+    <button class="btn">PAPER</button>
+    <button class="btn">SISER</button>
+</div>
+</div>
+</body>
+<script>
+    const player=document.querySelector("#player");
+    const computer=document.querySelector("#computer");
+    const result=document.querySelector("#result");
+    const button=document.querySelectorAll(".btn");
+    button.forEach((b)=>{
+     b.addEventListener("click",()=>{
+        console.log(b.textContent);
+        var pl=b.textContent;
+        player.innerHTML=pl;
+        var ai;
+        var no=Math.floor(Math.random()*3)+1;
+        console.log(no);
+        var arr=['ROCK','PAPER','SISER'];
+        ai=arr[no-1];
+        computer.innerHTML=ai; 
+        winner(pl,ai);
+     })
+    });
+    
+    const winner=(pl,ai)=>{
+     if(pl=="ROCK"&&ai=="SISER")
+     {
+          result.innerHTML="PLAYER WON";
+     }
+     else if(pl=="PAPER"&&ai=="ROCK")
+     {
+          result.innerHTML="PLAYER WON";
+     }
+     else if(pl=="SISER"&&ai=="PAPER")
+     {
+        result.innerHTML="PLAYER WON";
+     }
+     else if(pl==ai)
+     {
+        result.innerHTML="MATCH TIE";
+     }
+     else
+     {
+        result.innerHTML="AI WON";
+     }
+    }
+    
+</script>
+</html>
